@@ -1,0 +1,88 @@
+.firstContainer {
+    margin-top: 4rem;
+    min-height: calc(100vh - 4rem);
+}
+.titleContainer {
+    background-color: #1D64F2;
+    width: 100%;
+    padding: 5rem 12rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .mainTitle {
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #fff;
+    text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  }
+
+
+  .baslik{
+    font-size: 1.8rem;
+    padding: 0 6%;
+    margin: 0;
+    margin-top: 3rem;
+  }
+
+  .metinContainer{
+    margin: 0 6%;
+    margin-top: 3rem;
+    background-color: #F0F0F0;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .metinContainer p{
+    font-size: 1rem;
+  }
+
+
+  @media screen and (max-width: 767px) {
+
+    .firstContainer {
+        padding: 1rem 0;
+        margin: 0;
+        margin-top: 2rem;
+        
+    }
+
+    .titleContainer {
+        padding: 7rem 4%;
+    }
+
+    .mainTitle {
+        font-size: 2rem;
+        margin: 0;
+        text-align: center;
+        line-height: 1.35;
+
+    }
+
+    .baslik{
+        font-size: 1.5rem;
+        padding: 0 4%;
+        margin: 0;
+        margin-top: 1rem;
+    }
+
+    .metinContainer{
+        margin: 0 4%;
+        margin-top: 1rem;
+        background-color: #F0F0F0;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+    
+      .metinContainer p{
+        font-size: 0.9rem;
+      }
+  }

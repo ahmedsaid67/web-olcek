@@ -1,0 +1,162 @@
+/* Genel sayfa ayarları */
+.sliderContainer {
+    padding: 3% 0;
+    overflow: hidden; /* Kaydırma çubuğunu gizle */
+    position: relative;
+  }
+  
+  .sliderContainer h2 {
+    margin: 0 0 3% 6%;
+    font-size: 2rem;
+  }
+  
+  .responseContainer {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    gap: 1rem;
+    white-space: nowrap; /* Elemanların alt satıra geçmesini engeller */
+    padding: 0 6%;
+  }
+
+  .responseContainer::-webkit-scrollbar {
+    display: none;
+}
+  
+  .responseItem {
+    background-color: #F0F0F0;
+    padding: 1rem;
+    border-radius: 2rem;
+    min-width: 405px; /* Minimum genişlik */
+    height: auto;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+  .icon {
+    margin-bottom: 4%; /* Space between icon and content */
+    font-size: 3rem;
+  }
+  
+  .responseItem h3 {
+    font-size: 1.2rem;
+    margin-bottom: 3%;
+    line-height: 1.4;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+  
+  .responseItem p {
+    white-space: normal;
+    line-height: 1.6;
+    overflow-wrap: break-word;
+    margin: 0;
+  }
+  
+  /* Arrow button container styling */
+  .arrowsContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 0 15px;
+    gap: 1rem;
+    margin-top: 3%;
+  }
+  
+  .arrowButton {
+    background-color: #d3d3d3;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1;
+    color: #333;
+  }
+  
+  .arrowButton.disabled {
+    background-color: #e2e2e2;
+    color: #b0b0b0;
+  }
+  
+  .nextArrow {
+    margin-right: 6%;
+  }
+  
+  .arrowButton svg {
+    font-size: 1.2rem;
+  }
+  
+  /* 768px ve altı ekranlar için ayarlamalar */
+  @media (max-width: 767px) {
+      .sliderContainer {
+          padding: 6% 0 6% 0;
+      }
+    
+      .sliderContainer h2 {
+          margin: 0 0 6% 4%;
+          font-size: 1.5rem;
+      }
+
+      .responseItem p {
+          line-height: 1.4;
+          font-size: 0.9rem;
+      }
+
+      .responseItem h3 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.2;
+      }
+
+      .responseContainer {
+          padding: 0 4%;
+          gap: 0.75rem;
+      }
+
+      .responseItem {
+          min-width: 260px; /* Minimum genişlik */
+          border-radius: 1.75rem;
+      }
+
+      .arrowsContainer {
+        gap: 0.8rem;
+        margin-top: 6%;
+      }
+    
+      .arrowButton {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+      }
+      .nextArrow{
+        margin-right: 4%;
+      }
+      .arrowButton svg {
+        font-size: 1rem;
+      }
+
+      .icon {
+        font-size: 2rem;
+      }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    /* .responseContainer {
+      gap: 2%;
+    } */
+  
+  }
+
+  @media (min-width: 1920px) {
+
+    .arrowButton {
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+    }
+  
+  }
+  
+  

@@ -1,0 +1,280 @@
+
+
+/* First Section Styles */
+.firstContainer {
+  padding: 3% 12%;
+  display: flex;
+  background-color: #1D64F2; /* Blue to white gradient */
+  gap: 4%;
+  margin-top: 4rem;
+}
+
+.textContainer,
+.anaSliderContainer {
+  width: 50%;
+  height: 100%;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.textContainer h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.textContainer p {
+  margin: 4% 0;
+  color: #fff;
+  line-height: 1.6; /* Satırlar arası boşluk */
+  font-size: 1rem;
+}
+
+.textImage {
+  display: flex;
+  gap: 1rem;
+}
+.textImage img {
+  width: 25%;
+  height: auto;
+}
+
+
+.anaSliderContainer {
+  display: flex;
+}
+
+.anaSliderContainer img {
+  width: 100%;
+  height: auto;
+}
+
+
+
+
+.sliderContainer {
+  padding: 3% 0 3% 0;
+  overflow: hidden; /* Hides the scrollbar */
+  position: relative;
+}
+
+
+.sliderContainer h2 {
+  margin: 0 0 3% 6%;
+  font-size: 2rem;
+}
+
+.imageContainerWrapper {
+  position: relative;
+}
+
+.imageContainer {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  gap: 1rem;
+}
+
+
+
+.imageContainer::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Webkit browsers */
+}
+
+
+.sliderItem:first-child {
+  margin-left: 6%; /* Left margin for the first image */
+}
+
+.sliderItem:last-child {
+  margin-right: 6%; /* Right margin for the last image */
+}
+
+.responseItem {
+  background-color: #fff;
+  padding: 1rem;
+  width: 405px;
+  height: auto;
+  border-radius: 2rem;
+}
+
+
+
+.sliderItem img {
+  width: 405px;
+  height: auto;
+  border-radius: 2rem;
+}
+
+/* Container for arrow buttons */
+.arrowsContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 0 15px; /* Some padding to give space between arrows */
+  gap: 1rem;
+  margin-top: 3%;
+}
+
+/* Arrow buttons style */
+.arrowButton {
+  background-color: #d3d3d3; /* Light gray background */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+  color: #333; /* Dark gray arrows */
+
+}
+
+.arrowButton.disabled {
+  background-color: #e2e2e2; /* Light gray background when disabled */
+  color: #b0b0b0; /* Lighter gray arrows when disabled */
+}
+
+.nextArrow{
+  margin-right: 6%;
+}
+
+
+.arrowButton svg {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 767px) {
+
+  .firstContainer {
+    padding: 6% 4%;
+    flex-direction: column-reverse;
+    gap: 0;
+    margin-top: 3.5rem;
+  }
+
+  .textContainer,
+  .anaSliderContainer {
+    width: 100%;
+  }
+  .textContainer h1 {
+    font-size: 1.5rem;
+    margin-top: 6%;
+  }
+
+  .textContainer p {
+    margin: 4% 0;
+    line-height: 1.4; /* Satırlar arası boşluk */
+    font-size: 0.9rem;
+  }
+  .textImage{
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+
+  }
+  .textImage img {
+    width: 40%;
+    height: auto;
+  }
+
+  .sliderContainer {
+    padding: 0 0 6% 0;
+  }
+  .sliderContainer h2 {
+    margin: 6% 0 6% 4%;
+    font-size: 1.5rem;
+  }
+  .sliderItem img {
+    width: 260px;
+    border-radius: 1.5rem;
+  }
+  .imageContainer {
+    gap: 0.75rem;
+  }
+
+  .sliderItem:first-child {
+    margin-left: 4%; /* Left margin for the first image */
+  }
+  
+  .sliderItem:last-child {
+    margin-right: 4%; /* Right margin for the last image */
+  }
+
+  .responseItem:first-child {
+    margin-left: 4%; /* Left margin for the first image */
+  }
+  
+  .responseItem:last-child {
+    margin-right: 4%; /* Right margin for the last image */
+  }
+
+  .arrowsContainer {
+    gap: 0.8rem;
+    margin-top: 6%;
+  }
+
+  .arrowButton {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+  }
+  .nextArrow{
+    margin-right: 4%;
+  }
+  .arrowButton svg {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .firstContainer {
+    padding: 6%;
+    flex-direction: column-reverse;
+    gap: 0;
+    margin-top: 3.5rem;
+  }
+
+  .textContainer,
+  .anaSliderContainer {
+    width: 100%;
+  }
+  .textContainer h1 {
+    margin-top: 6%;
+  }
+
+  .textContainer p {
+    margin: 4% 0;
+  }
+  .textImage{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+
+  }
+  .textImage img {
+    width: 45%;
+    height: auto;
+  }
+
+}
+
+@media (min-width: 1920px) {
+
+  .arrowButton {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+  }
+
+  .firstContainer {
+    margin-top: 4rem;
+  }
+ 
+}

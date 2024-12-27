@@ -1,0 +1,743 @@
+.drugContainer{
+  min-height: calc(100vh - 4.5rem);
+}
+  
+  
+.loadingOverlay {
+  /* background-color: #6B6B6B; */
+  display: flex;
+  justify-content: center; /* Loader'ı yatay olarak ortala */
+  align-items: center; /* Loader'ı dikey olarak ortala */
+  min-height: 101vh;
+}
+
+
+
+.firstContainer{
+  margin: 1rem 6%;
+  margin-top: 4.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.mapContainer {
+  display: flex;
+  align-items: center; /* Dikey hizalama */
+  gap: 0.5rem; /* Öğeler arasındaki boşluk */
+  flex-wrap: wrap; /* Öğelerin gerektiğinde alt satıra geçmesini sağlar */
+  padding-top: 0.6rem; /* Daha ince bir boşluk */
+  padding-bottom: 0.6rem; /* Daha ince bir boşluk */
+  
+}
+
+.mapText {
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none; /* Linklerin alt çizgisini kaldırır */
+  color: #333333;
+  white-space: normal; /* Metnin gerektiğinde satırlara kırılmasına izin verir */
+  word-wrap: break-word; /* Uzun kelimelerin alt satıra geçmesini sağlar */
+  line-height: 1.3;
+
+}
+
+.activeText {
+  font-size: 0.8rem; /* Daha büyük boyut */
+  font-weight: 700; /* Daha kalın font */
+  color: rgb(29,29,31); /* Vurgulu renk */
+  line-height: 1.3; /* Satır arası boşluk artırılır */
+  word-wrap: break-word; /* Uzun kelimelerin alt satıra geçmesini sağlar */
+  white-space: normal; /* Bu, metnin gerektiğinde satırları kırmasına izin verir */
+  margin: 0;
+}
+
+.mapText:hover {
+  color: rgb(29,29,31); /* Hover rengini vurgulu yap */
+}
+
+.icon {
+  font-size: 0.8rem; /* Slash veya ikon boyutu */
+  color: #333333; /* Daha yumuşak bir renk */
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center; /* Dikey hizalama */
+  padding: 0.3rem; /* Daha ince bir boşluk */
+  background-color: #E0E0E0;
+  border-radius: 2rem; /* Daha ince yuvarlatılmış köşeler */
+  width: 22.5%;
+  height: 2.5rem;
+}
+
+.searchInput {
+  flex: 1; /* Input genişliği doldurur */
+  /* padding: 0.4rem; */
+  /* padding-left: 0.8rem; */
+  font-size: 1rem; /* Daha küçük bir font */
+  border: none;
+  outline: none; /* Tıklayınca kenarlık kaldırılır */
+  color: #333333; /* Daha yumuşak metin rengi */
+  background-color: #E0E0E0;
+  border-radius: 2rem; /* Daha ince yuvarlatılmış köşeler */
+  width: 80%;
+
+}
+
+.searchInput::placeholder {
+  color: #333333; /* Daha açık placeholder rengi */
+  font-size: 1rem; /* Placeholder yazısını küçült */
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem; /* Daha ince padding */
+  padding-right: 0.8rem;
+  padding-left: 0.8rem;
+  background-color: transparent; /* Butonun varsayılan arka planını kaldır */
+  color: #6B6B6B; /* İkon rengi */
+  border: none;
+  transition: color 0.3s ease;
+}
+
+
+.searchButton svg {
+  font-size: 1rem; /* Biraz daha küçük ikon */
+}
+
+
+.resultsContainer {
+  max-height: 25rem; /* Container yüksekliği */
+  width: 25%;
+  overflow-y: auto; /* Kaydırma ekle */
+  border-radius: 0.25rem;
+  padding: 1rem;
+  position: absolute;
+  right: 6%;
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), 0px 0px 8px rgba(0, 0, 0, 0.1); /* Tüm kenarlara gölge */
+
+  /* Scrollbar stilleri */
+  scrollbar-width: thin; /* Firefox için ince kaydırma çubuğu */
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent; /* Firefox renk ayarları */
+}
+
+
+.resultsContainer::-webkit-scrollbar {
+  width: 0.5rem; /* Scrollbar genişliği */
+}
+
+
+.resultItem {
+  padding: 0.5rem;
+  border-bottom: 1px solid rgb(242, 242, 242);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* .resultItem:last-child {
+  border-bottom: none;
+} */
+
+.resultItem:hover{
+  color: #1D64F2;
+}
+
+.noResult {
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.resulItemIcon{
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+.resultsContainerMobile{
+  display: none;
+}
+
+
+
+
+
+.pageContainer{
+  display: flex;
+  min-height: 80vh;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.pageLeftContainer{
+  /* margin: 4rem 0; */
+  margin-left: 6%;
+  display: flex;
+}
+.pageLeftAdvert{
+  width: 80%;
+  background-color: #E0E0E0;
+}
+
+.pageRightContainer{
+  /* margin: 4rem 0; */
+  margin-right: 6%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pageRightAdvert{
+  width: 80%;
+  background-color: #E0E0E0;
+}
+
+.pageLeftContainer,
+.pageRightContainer {
+  flex: 1; /* Geri kalan genişliği eşit şekilde paylaş */
+}
+
+.pageCenterContainer {
+  width: 900px;
+  /* border: 2px solid #D9D9D9; */
+  border-radius: 6px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  background-color: #fff;
+}
+
+.pageCategoryContainer {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid rgb(242, 242, 242);
+  background-color: #1D64F2;
+}
+
+
+
+
+
+.categoryContainer{
+  height: 2.25rem;
+  display: flex;
+}
+
+.scrollContainer{
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: 1rem;
+
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+.ItemContainer{
+  display: flex;
+  align-items: center;
+  background-color: #E0E0E0;
+  height: 2.25rem;
+  border-radius: 0.5rem;
+  padding: 0 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+
+
+.ItemContainer:hover{
+  background-color: #BDBDBD;
+}
+
+
+.ItemActiveContainer {
+  display: flex;
+  align-items: center;
+  background-color: rgb(29,29,31);
+  height: 2.25rem;
+  border-radius: 0.5rem;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+  color: #fff;
+}
+
+
+
+
+
+.directionContainer {
+  height: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end; /* Tüm butonları sağa hizalar */
+}
+
+.buttonLeft,
+.buttonRight {
+  padding: 0 0.5rem; /* Yatayda genişliği artırır */
+  border-radius: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E0E0E0; /* Varsayılan arka plan rengi */
+  border: 1px solid #ccc; /* İnce bir kenarlık */
+  cursor: pointer; /* İmleci el yapar */
+  transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Yumuşak geçişler */
+}
+
+.buttonLeft:hover,
+.buttonRight:hover {
+  background-color: rgb(29,29,31); /* Hover sırasında renk değişimi */
+  color: white; /* Yazı rengini beyaz yap */
+  transform: scale(1.05); /* Buton hafifçe büyür */
+  border-color: rgb(29,29,31); /* Kenarlık rengini değiştir */
+}
+
+.disabled {
+  background-color: #f5f5f5; /* Devre dışı arka plan rengi */
+  color: #aaa; /* Devre dışı yazı rengi */
+  border-color: #ddd; /* Devre dışı kenarlık rengi */
+  cursor: not-allowed; /* İmleci engelli duruma getirir */
+  transform: none; /* Hover efekti iptal */
+  pointer-events: none; /* Tüm tıklanabilir olayları iptal eder */
+}
+
+/* Kırmızı ikonun engellenmesi için */
+.disabled::before,
+.disabled::after {
+  content: none; /* Pseudo elementlerin içeriğini tamamen kaldırır */
+}
+
+.buttonLeft:disabled:hover,
+.buttonRight:disabled:hover {
+  background-color: #f5f5f5; /* Hover'da renk değişimi olmamalı */
+  color: #aaa; /* Hover'da yazı rengi değişimi olmamalı */
+  border-color: #ddd; /* Kenarlık rengi sabit kalır */
+  cursor: not-allowed; /* İmleci engelli duruma getirir */
+}
+
+.directionIcon{
+  font-size: 0.9rem;
+}
+
+
+
+
+
+
+.altCategoryContainer{
+  padding: 1rem 0;
+  min-height: 5rem;
+  border-bottom: 2px solid rgb(242, 242, 242);
+  border-top: 2px solid rgb(242, 242, 242);
+}
+
+.altCategory {
+  
+  display: flex;
+  flex-wrap: wrap; /* Alt satıra geçmeyi sağlar */
+  gap: 1rem;
+  align-items: center;
+  }
+
+.altCategoryText{
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.altCategoryButton {
+    height: 2.25rem;
+    border-radius: 1rem;
+    padding: 0 0.5rem;
+    display: flex;
+    align-items: center;
+    background-color: #E0E0E0;;
+}
+
+.activealtCategoryButton {
+    height: 2.25rem;
+    border: 2px solid rgb(29, 29, 31);
+    border-radius: 1rem;
+    padding: 0 0.5rem;
+    display: flex;
+    align-items: center;
+    background-color: rgb(29, 29, 31);
+    color: #fff;
+    font-size: 1rem;
+}
+
+
+
+.medicationContainer{
+  gap: 2rem;
+}
+
+.contextContainer h3 {
+  color: #6B6B6B; /* H3 için renk */
+  display: flex;
+  align-items: center; /* İkon ve metni hizala */
+  gap: 0.75rem; /* İkon ile metin arasındaki boşluk */
+  font-size: 1rem;
+  margin: 0;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.contextContainer h3:hover {
+  color: rgb(29, 29, 31); /* H3 hover rengi */
+  cursor: pointer;
+}
+
+.contextArticle h3:nth-child(1),
+.contextArticle h3:nth-child(2) {
+  margin-bottom: 0.5rem;
+}
+
+
+.contextContainer {
+  padding: 1rem 0;
+  border-bottom: 2px solid rgb(242, 242, 242);
+}
+
+.contextContainerAlternative {
+  display: flex;
+  justify-content: center; /* Loader'ı yatay olarak ortala */
+  align-items: center; /* Loader'ı dikey olarak ortala */
+  min-height: 50vh;
+}
+
+
+.contextEtkin{
+  font-weight: 400;
+  color: #6B6B6B;
+  font-size: 0.9rem;
+}
+
+.contextContainer h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.contextArticle {
+  margin-top: 1rem;
+}
+
+/* İkon stilleri */
+.iconContext {
+  font-size: 1.1rem; /* İkon boyutu */
+  color: #1D64F2; /* İkon rengi */
+  flex-shrink: 0; /* İkonun boyutunun sabit kalması */
+}
+
+
+.showMoreContainer{
+
+  display: flex;
+  justify-content: center;
+}
+
+.showMoreButton{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color: rgb(29,29,31);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
+
+.showMoreButton:hover{
+  cursor: pointer;
+}
+
+  
+  
+@media (min-width: 1920px) {
+
+  .pageCenterContainer {
+    width: 1200px;
+  }
+
+}
+  
+  
+  
+@media screen and (max-width: 767px) {
+  .drugContainer{
+    min-height: calc(100vh - 3.47rem);
+  }
+
+  .firstContainer{
+    padding: 1rem 4%;
+    margin:0;
+    margin-top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .mapContainer {
+    gap: 0.2rem; /* Öğeler arasındaki boşluk */
+    padding: 0;
+   
+  }
+
+  .mapText {
+      font-size: 0.7rem;
+      font-weight: 500;
+      line-height: 1.2;
+  }
+
+  .icon {
+      font-size: 0.7rem; /* Slash veya ikon boyutu */
+  }
+
+  .activeText {
+      font-size: 0.7rem; /* Daha büyük boyut */
+      font-weight: 700;
+      line-height: 1.2;
+  }
+
+  
+  .searchContainer {
+    padding: 0.3rem; /* Daha ince bir boşluk */
+    border-radius: 1rem; /* Daha ince yuvarlatılmış köşeler */
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .searchContainerMobile {
+    display: flex;
+    align-items: center; /* Dikey hizalama */
+    padding: 0.3rem;
+    background-color: #E0E0E0;
+    border-radius: 1rem; /* Daha ince yuvarlatılmış köşeler */
+    width: 100%;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+    
+  }
+
+  .searchInput {
+    font-size: 0.9rem; /* Daha küçük bir font */
+    border-radius: 1.5rem; /* Daha ince yuvarlatılmış köşeler */
+
+  }
+
+  .searchInput::placeholder {
+    font-size: 0.9rem; /* Placeholder yazısını küçült */
+  }
+
+  .searchButton svg {
+    font-size: 0.9rem; /* Biraz daha küçük ikon */
+  }
+
+
+  .resultsContainer{
+    display: none;
+  }
+
+
+  .resultsContainerMobile {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: #fff;
+    flex-direction: column;
+    overflow-y: auto; /* Kaydırma ekler */
+    scrollbar-width: thin; /* Firefox için ince kaydırma çubuğu */
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent; /* Kaydırma çubuğu renkleri */
+
+    padding: 0.75rem;
+  }
+  
+  .resultsContainerMobile::-webkit-scrollbar {
+    width: 0.5rem; /* Scrollbar genişliği */
+  }
+
+  .resultItemMobile {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgb(242, 242, 242);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  
+  .resultItemMobile:hover{
+    color: #1D64F2;
+  }
+
+  .noResultMobile {
+    padding: 0.75rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  .resulItemIconMobile{
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+  }
+
+  .backContainer{
+    margin-bottom: 1rem;
+
+  }
+
+  .backIcon{
+    font-size: 1.3rem;
+  }
+
+
+
+  .pageContainer{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .pageLeftContainer,
+  .pageRightContainer {
+    display: none; /* Hide on small screens */
+  }
+
+  .pageCenterContainer {
+    width: 100%; /* Take up full width */
+    padding: 1rem 4% 1rem 4%;
+  }
+
+  .categoryContainer{
+    margin: 0;
+    margin-bottom: 1rem;
+
+  }
+
+  .scrollContainer{
+    gap: 0.75rem;
+  }
+
+  .ItemActiveContainer {
+    border-radius: 0.5rem;
+  }
+  
+  .ItemContainer {
+    font-size: 0.9rem;
+  }
+
+  .ItemActiveContainer {
+    font-size: 0.9rem;
+  }
+
+  .directionContainer{
+    display: none;
+  }
+
+
+  .altCategoryText{
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+
+  .altCategoryContainer{
+    border-top: 2px solid rgb(242, 242, 242);
+  }
+
+
+  .altCategoryButton{
+    font-size: 0.9rem;
+    padding: 0 0.9rem;
+  }
+
+  .activealtCategoryButton {
+    padding: 0 0.9rem;
+    font-size: 0.9rem;
+  }
+
+  .contextContainer h3 {
+    gap: 0.5rem; /* İkon ile metin arasındaki boşluk */
+    font-size: 0.9rem;
+  }
+
+  
+  .contextEtkin{
+    font-size: 0.9rem;
+  }
+  
+  .contextContainer h2 {
+    font-size: 1.1rem;
+  }
+}
+  
+  
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+
+  .pageContainer{
+    /* min-height: 50vh; */
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .pageLeftContainer,
+  .pageRightContainer {
+    display: none; /* Hide on small screens */
+  }
+
+  .pageCenterContainer {
+    width: 100%; /* Take up full width */
+    padding: 0 6% 0 6%;
+  }
+
+  .searchContainer{
+    width: 30%;
+  }
+
+  .mapContainer {
+    gap: 0.4rem; /* Öğeler arasındaki boşluk */
+    flex-wrap: wrap; 
+    line-height: 0.75; /* Satır aralığı sıkılaştırıldı */
+  }
+
+
+}
+
+
+@media screen and (min-width: 1025px) and (max-width: 1279px) {
+
+  .pageLeftContainer{
+    margin-left: 1%;
+  }
+  .pageRightContainer {
+    margin-right: 1%;
+  }
+  .searchContainer{
+    width: 25%;
+  }
+
+
+}
+
+      
+      
+  

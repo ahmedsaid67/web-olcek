@@ -1,0 +1,57 @@
+.firstContainer {
+    margin-top: 4rem;
+    min-height: calc(100vh - 4rem);
+  }
+
+  .metinContainer {
+    margin: 0 6%;
+    margin-top: 7rem;
+    background-color: #F0F0F0;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
+  .metinContainer p {
+    font-size: 1rem;
+  }
+  .metinContainer .subHeading {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  .metinContainer .linkList {
+    padding-left: 1.5rem;
+  }
+  .metinContainer .linkList li {
+    margin-bottom: 1rem;
+  }
+  .metinContainer .linkList a {
+    color: #1D64F2;
+    text-decoration: none;
+  }
+  .metinContainer .linkList a:hover {
+    text-decoration: underline;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .firstContainer {
+        padding: 1rem 0;
+        margin: 0;
+        margin-top: 3rem;
+    }
+    .metinContainer {
+        margin: 0 4%;
+        margin-top: 1rem;
+        background-color: #F0F0F0;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    .metinContainer p {
+        font-size: 0.9rem;
+    }
+  
+    .subHeading{
+      font-size: 1.1rem;
+    }
+  }
+  

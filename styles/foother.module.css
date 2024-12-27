@@ -1,0 +1,150 @@
+/* Genel sayfa ayarları */
+.container {
+    padding: 3% 12%;
+    background: #1D64F2;
+    display: flex;
+    justify-content: space-between;
+}
+  
+  .itemContainer {
+  }
+  
+  .itemContainer h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 1rem; /* Add some spacing between the title and the items */
+  }
+  
+  .itemContainer p {
+    color: #fff;
+    font-size: 1rem;
+    margin: 0.25rem 0; /* Consistent spacing between items */
+  }
+  
+  .indirContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .indirContainer img {
+    width: 125px;
+    height: auto;
+  }
+  
+  .linkItem, .contactItem {
+    display: flex;
+    align-items: center;
+    gap: 18px; /* Space between icons and text */
+    margin-bottom: 0.8rem; /* Space between individual items */
+  }
+  
+  .icon {
+    font-size: 1rem;
+    color: #fff;
+  }
+
+    /* Add this style for social media icons */
+  .socialIcons {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .sIcon {
+    font-size: 1.75rem;
+    color: #fff;
+  }
+
+  /* Alt çizgi rengini beyaz yapalım */
+  .itemContainer p:hover,
+  .hamburgerContainer p:hover {
+    text-decoration: underline;
+    text-decoration-color: #fff; /* Beyaz renk */
+  }
+
+  /* Mobil menüde de aynı etkiyi uygulayalım */
+  .mobileMenuContent p:hover {
+    text-decoration: underline;
+    text-decoration-color: #fff; /* Beyaz renk */
+  }
+
+  .contactItem p:hover {
+    text-decoration: none; /* Alt çizgiyi kaldırır */
+  }
+
+
+  
+  
+  /* 768px ve altı ekranlar için ayarlamalar */
+  @media (max-width: 819px) {
+    .container {
+      padding: 3% 6% ;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: flex-start; /* Stack items vertically in smaller screens */
+    }
+  
+    .itemContainer {
+      flex: 1;
+      min-width: 100%; /* Ensure items take full width on smaller screens */
+      margin-right: 0; /* Remove margin for better alignment in small screens */
+    }
+  
+    .itemContainer h2 {
+      font-size: 1rem;
+    }
+  
+    .itemContainer p {
+      color: #fff;
+      font-size: 0.9rem;
+      margin: 0.125rem 0;
+    }
+
+    .indirContainer{
+      gap: 0.6rem;
+    }
+    .indirContainer img {
+      width: 120px;
+      height: auto;
+    }
+
+    .indirContainer img:last-of-type {
+      margin-bottom: 0.8rem;
+    }
+  
+    /* Ensure consistent spacing and alignment for icons and text in smaller screens */
+    .linkItem, .contactItem {
+      gap: 10px; /* Increase space between icons and text */
+    }
+  
+    .icon {
+        font-size: 0.9rem;
+      }
+
+    .socialIcons {
+      gap: 0.8rem;
+    }
+  
+    .sIcon {
+      font-size: 1.5rem;
+    }
+  }
+
+    /* 768px ve altı ekranlar için ayarlamalar */
+    @media (max-width: 767px) {
+      .container {
+        padding: 6% 4%;
+      }
+    
+      
+    }
+
+
+  @media (min-width: 820px) and (max-width: 1247px) {
+    .container {
+      gap: 4%;
+      padding: 3% 6%;
+    }
+    
+  
+  }
