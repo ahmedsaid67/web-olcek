@@ -73,10 +73,6 @@ const ImageSlider = () => {
         </div>
         <div className={styles.contactItem}>
           <FaPhoneAlt className={styles.icon} />
-          <p>05069405414</p>
-        </div>
-        <div className={styles.contactItem}>
-          <FaPhoneAlt className={styles.icon} />
           <p>05077046141</p>
         </div>
         <div className={styles.contactItem}>

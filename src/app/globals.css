@@ -18,11 +18,11 @@ a {
 
 @media (prefers-color-scheme: dark) {
   html {
-    color-scheme: dark;
+    color-scheme: light; /* Her zaman aydınlık temayı kullan */
   }
   body {
-    color: white;
-    background: black;
+    color: rgb(29, 29, 31); /* Varsayılan aydınlık tema metin rengini uygula */
+    background: #fff; /* Aydınlık tema arka plan rengini uygula */
   }
 }
 

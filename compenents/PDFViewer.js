@@ -65,7 +65,9 @@ const PDFViewer = ({ file }) => {
 
     const context = canvas.getContext('2d');
     const containerWidth = canvas.parentNode.offsetWidth;
-    const scale = containerWidth / page.getViewport({ scale: 1 }).width;
+    const scaleFactor = window.innerWidth < 768 ? 2 : 1; // Mobil cihazlarda 2x ölçek
+    const scale = (containerWidth / page.getViewport({ scale: 1 }).width) * scaleFactor;
+
     const viewport = page.getViewport({ scale });
 
     canvas.height = viewport.height;

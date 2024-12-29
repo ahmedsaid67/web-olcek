@@ -565,7 +565,6 @@ useEffect(() => {
                           {medication.name} için doz hesaplama: Size uygun dozajı öğrenin.
                         </h3>
                       </Link>
-
                       </div>
                     </div>
                   ))}

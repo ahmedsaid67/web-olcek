@@ -25,10 +25,6 @@ export default function Home() {
               <div>
                 <h2>İletişim Bilgileri:</h2>
                 <div className={styles.klasikonuştur}>
-                  <FaPhone  className={styles.icon}/>
-                  <p>(+90) 506 940-5414</p>
-                </div>
-                <div className={styles.klasikonuştur}>
                   <FaPhone className={styles.icon}/>
                   <p>(+90) 507 704-6141</p>
                 </div>
