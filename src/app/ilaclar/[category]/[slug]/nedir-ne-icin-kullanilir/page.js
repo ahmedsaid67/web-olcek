@@ -81,10 +81,10 @@ export default async function TakviyeDetay({ params }) {
   return (
     <>
       <Head>
-        <title>{`${product.name} Nedir, Ne İşe Yarar?`}</title>
+        <title>{`${product.name} Nedir, Ne için Kullanılır?`}</title>
         <meta
           name="description"
-          content={`${product.name} nedir ve ne işe yarar? ${product.name}'in detaylı özelliklerini keşfedin ve ihtiyaçlarınıza nasıl çözüm sunabileceğini öğrenin.`}
+          content={`${product.name} nedir, ne için kullanılır? ${product.name}'in detaylı özelliklerini keşfedin ve ihtiyaçlarınıza nasıl çözüm sunabileceğini öğrenin.`}
         />
       </Head>
 
@@ -112,9 +112,9 @@ export default async function TakviyeDetay({ params }) {
               </div>
             </Link>
             <span className={styles.icon}>/</span>
-            <h1 className={`${styles.mapText} ${styles.activeText}`}>
+            <div className={`${styles.mapText} ${styles.activeText}`}>
               {product.name} Nedir ve Ne İçin Kullanılır?
-            </h1>
+            </div>
           </div>        
         </div>
 
@@ -129,7 +129,7 @@ export default async function TakviyeDetay({ params }) {
 
           <div className={styles.pageCenterContainer}>
             <div key={product.id} className={styles.contextContainer}>
-              <h2>{product.baslik}</h2>
+              <h1>{product.baslik}</h1>
               <p>{product.nedir}</p>
               <p>{product.ne_icin_kullanilir}</p>
             </div>
@@ -137,11 +137,11 @@ export default async function TakviyeDetay({ params }) {
 
 
             <div className={styles.TanitimContainer}>
-                <h3>Ölçek | İlaç ve Besin Takviyelerinde Doz Hesaplama ve Hatırlatıcı Asistanınız</h3>
-                <p>Ölçek ile İlaç dozlarınızı kolayca hesaplayın, besin takviyelerinizin dozlarına hızla ulaşın! Hatırlatma özelliğiyle sağlığınızı güvenle koruyun. <Link href="/indir"><strong>Hemen indirin!</strong></Link></p>
+                <div className={styles.TanitimBaslik}>Ölçek | İlaç ve Besin Takviyelerinde Doz Hesaplama ve Hatırlatıcı Asistanınız</div>
+                <div className={styles.TanitimText}>Ölçek ile İlaç dozlarınızı kolayca hesaplayın, besin takviyelerinizin dozlarına hızla ulaşın! Hatırlatma özelliğiyle sağlığınızı güvenle koruyun. <Link href="/indir"><strong>Hemen indirin!</strong></Link></div>
                 <Link href="/indir">
                   <div className={styles.TanitimImageContainer}>
-                    <h3>İlaç ve Takviyede Doğru Doz İçin: Ölçek!</h3>
+                    <div className={styles.TanitimImageBaslik}>İlaç ve Takviyede Doğru Doz İçin: Ölçek!</div>
                     <img src="/sliderbig.png" alt="Ölçek | İlaç, Besin Takviyesi Doz Hesaplama ve Hatırlatma Uygulaması" />
                     <div className={styles.textImage}>
                       <img src="/storeios.png" alt="Ölçek | İlaç, Besin Takviyesi Doz Hesaplama ve Hatırlatma Uygulaması İndir - İos" />

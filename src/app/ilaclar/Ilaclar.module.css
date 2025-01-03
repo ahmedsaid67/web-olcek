@@ -433,7 +433,7 @@
       display: flex;
       flex-direction: column;
       gap: 0;
-      align-items: start;
+      align-items: flex-start;
     }
 
     .mapContainer {
@@ -441,7 +441,7 @@
     }
     
     .searchContainer {
-      border-radius: 1rem; /* Daha ince yuvarlatılmış köşeler */
+      border-radius: 2rem; /* Daha ince yuvarlatılmış köşeler */
       width: 100%;
     }
 
@@ -502,7 +502,7 @@
       align-items: center; /* Dikey hizalama */
       padding: 0.3rem;
       background-color: #E0E0E0;
-      border-radius: 1rem; /* Daha ince yuvarlatılmış köşeler */
+      border-radius: 2rem; /* Daha ince yuvarlatılmış köşeler */
       width: 100%;
       height: 2.5rem;
       margin-bottom: 1rem;

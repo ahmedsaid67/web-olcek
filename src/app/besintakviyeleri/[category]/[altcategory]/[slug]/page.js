@@ -115,9 +115,9 @@ async function getProductDetail(slug) {
               <div className={styles.mapText}>{product.product_category.name}</div>
             </Link>
             <span className={styles.icon}>/</span>
-            <h1 className={`${styles.mapText} ${styles.activeText}`}>
+            <div className={`${styles.mapText} ${styles.activeText}`}>
               {product.name}
-            </h1>
+            </div>
           </div>
         </div>
 
@@ -131,7 +131,7 @@ async function getProductDetail(slug) {
 
         <div className={styles.pageCenterContainer}>
             <div className={styles.contextContainer}>
-                <h2>{product.name}</h2>
+                <h1>{product.name}</h1>
                 <div >
                   <h3>
                     <FaInfoCircle className={styles.iconContext} />
@@ -143,11 +143,11 @@ async function getProductDetail(slug) {
             </div>
 
             <div className={styles.TanitimContainer}>
-                <h3>Ölçek | İlaç ve Besin Takviyelerinde Doz Hesaplama ve Hatırlatıcı Asistanınız</h3>
-                <p className={styles.TanitimContainerDetailText}>Ölçek ile İlaç dozlarınızı kolayca hesaplayın, besin takviyelerinizin dozlarına hızla ulaşın! Hatırlatma özelliğiyle sağlığınızı güvenle koruyun. <Link href="/indir"><strong>Hemen indirin!</strong></Link></p>
+                <div className={styles.TanitimBaslik}>Ölçek | İlaç ve Besin Takviyelerinde Doz Hesaplama ve Hatırlatıcı Asistanınız</div>
+                <div className={styles.TanitimText}>Ölçek ile İlaç dozlarınızı kolayca hesaplayın, besin takviyelerinizin dozlarına hızla ulaşın! Hatırlatma özelliğiyle sağlığınızı güvenle koruyun. <Link href="/indir"><strong>Hemen indirin!</strong></Link></div>
                 <Link href="/indir">
                   <div className={styles.TanitimImageContainer}>
-                    <h3>İlaç ve Takviyede Doğru Doz İçin: Ölçek!</h3>
+                    <div className={styles.TanitimImageBaslik}>İlaç ve Takviyede Doğru Doz İçin: Ölçek!</div>
                     <img src="/sliderbig.png" alt="Ölçek | İlaç, Besin Takviyesi Doz Hesaplama ve Hatırlatma Uygulaması" />
                     <div className={styles.textImage}>
                       <img src="/storeios.png" alt="Ölçek | İlaç, Besin Takviyesi Doz Hesaplama ve Hatırlatma Uygulaması İndir - İos" />

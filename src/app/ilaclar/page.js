@@ -363,10 +363,10 @@ useEffect(() => {
     <>
 
       <Head>
-        <title>{`${activeCategoryCombined.name} | Kullanım Talimatları, Doz Hesaplama ve Nedir Ne İçin Kullanılır?`}</title>
+        <title>{`${activeCategoryCombined.name} İlaçları | Doz Hesaplama, Kullanım Talimatları ve Daha Fazlası`}</title>
         <meta
           name="description"
-          content={`Bu sayfada ${activeCategoryCombined.name} kategorisindeki ilaçlar listelenmiştir. Kullanım talimatları, doz hesaplama yöntemleri ve ${activeCategoryCombined.name} türündeki ilaçların "Nedir ve Ne İçin Kullanılır?" detaylarını öğrenmek için tıklayın.`}
+          content={`Bu sayfada ${activeCategoryCombined.name} kategorisindeki ilaçlar, kullanım talimatları, doz hesaplama ve "Nedir? Ne İçin Kullanılır?" bilgileri sunulmaktadır.`}
         />
       </Head>
 
