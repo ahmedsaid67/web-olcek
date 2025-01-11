@@ -1,0 +1,433 @@
+.drugContainer{
+    min-height: calc(100vh - 4.5rem);
+    }
+  
+
+    .firstContainer{
+    margin: 1rem 6%;
+    margin-top: 4.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+    .messageContainer{
+
+    }
+
+    .errorMessage {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        font-weight: bold;
+    }
+
+    .returnLink {
+        display: inline-block;
+        font-size: 1.1rem;
+        background-color: #1D64F2; /* Hover etkisi */
+        color: #ffffff; /* Beyaz renkli metin */
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border: 1px solid #1D64F2;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+   .returnLink:hover {
+    background-color: #154a9d; /* Hover etkisi */
+   }
+
+
+  
+   .mapContainer {
+    display: flex;
+    align-items: center; /* Dikey hizalama */
+    gap: 0.5rem; /* Öğeler arasındaki boşluk */
+    flex-wrap: wrap; /* Öğelerin gerektiğinde alt satıra geçmesini sağlar */
+    padding-top: 0.6rem; /* Daha ince bir boşluk */
+    padding-bottom: 0.6rem; /* Daha ince bir boşluk */
+    
+  }
+  
+  .mapText {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-decoration: none; /* Linklerin alt çizgisini kaldırır */
+    color: #333333;
+    line-height: 1.3;
+  
+  }
+  
+  .activeText {
+    font-size: 0.8rem; /* Daha büyük boyut */
+    font-weight: 700; /* Daha kalın font */
+    color: rgb(29,29,31); /* Vurgulu renk */
+    line-height: 1.3; /* Satır arası boşluk artırılır */
+    margin: 0;
+  }
+  
+  .mapText:hover {
+    color: rgb(29,29,31); /* Hover rengini vurgulu yap */
+  }
+  
+  .icon {
+    font-size: 0.8rem; /* Slash veya ikon boyutu */
+    color: #333333; /* Daha yumuşak bir renk */
+  }
+  
+
+  
+  .pageContainer{
+    display: flex;
+    min-height: 80vh;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+  }
+  
+  .pageLeftContainer{
+    /* margin: 4rem 0; */
+    margin-left: 6%;
+    display: flex;
+  }
+  .pageLeftAdvert{
+    width: 80%;
+    background-color: #F0F0F0;
+  }
+  
+  .pageRightContainer{
+    /* margin: 4rem 0; */
+    margin-right: 6%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .pageRightAdvert{
+    width: 80%;
+    background-color: #F0F0F0;
+  }
+  
+  .pageLeftContainer,
+  .pageRightContainer {
+    flex: 1; /* Geri kalan genişliği eşit şekilde paylaş */
+  }
+  
+  .pageCenterContainer {
+    width: 900px;
+    border-radius: 6px;
+    background-color: #fff;
+    border: 2px solid #D9D9D9;
+  }
+  
+  
+
+  .contextContainer {
+    margin: 1rem;
+    border-bottom: 2px solid rgb(242, 242, 242);
+
+  }
+
+
+  .contextContainer p {
+    font-size: 1rem;
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .contextContainer h3 {
+    color: #6B6B6B; /* H3 için renk */
+    display: flex;
+    align-items: center; /* İkon ve metni hizala */
+    gap: 0.75rem; /* İkon ile metin arasındaki boşluk */
+    font-size: 1rem;
+    margin: 0;
+    transition: color 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .contextContainer h3:hover {
+    color: rgb(29, 29, 31); /* H3 hover rengi */
+    cursor: pointer;
+  }
+  
+  .contextArticle h3:nth-child(1),
+  .contextArticle h3:nth-child(2) {
+    margin-bottom: 0.5rem;
+  }
+  
+
+  
+  .contextContainerAlternative {
+    display: flex;
+    justify-content: center; /* Loader'ı yatay olarak ortala */
+    align-items: center; /* Loader'ı dikey olarak ortala */
+    min-height: 50vh;
+  }
+  
+  
+  .contextEtkin{
+    font-weight: 400;
+    color: #6B6B6B;
+    font-size: 0.9rem;
+  }
+  
+  .contextContainer h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  
+  .contextArticle {
+    margin-top: 1rem;
+  }
+  
+  /* İkon stilleri */
+  .iconContext {
+    font-size: 1.1rem; /* İkon boyutu */
+    color: #1D64F2; /* İkon rengi */
+    flex-shrink: 0; /* İkonun boyutunun sabit kalması */
+  }
+
+
+
+
+  .TanitimContainer {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .TanitimBaslik {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 700;
+  }
+  
+  .TanitimText {
+    font-size: 1rem;
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .TanitimText a strong {
+    font-weight: bold;
+    color: rgb(29,29,31);
+  }
+
+
+  .TanitimImageContainer{
+    border: 2px solid #D9D9D9;
+    border-radius: 1rem;
+    min-height: 400px;
+    background-color: #1D64F2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+  }
+  
+
+  .TanitimImageBaslik {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 700;
+  }
+
+  .TanitimImageContainer img {
+    width: 85%;
+    height: auto;
+  }
+
+  .textImage {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .textImage img {
+    width: 25%;
+    height: auto;
+  }
+  
+  
+
+  
+  
+@media (min-width: 1920px) {
+
+.pageCenterContainer {
+    width: 1200px;
+}
+
+}
+  
+  
+  
+@media screen and (max-width: 767px) {
+  
+    .drugContainer{
+        min-height: calc(100vh - 3.47rem);
+    }
+
+    .firstContainer{
+        display: none;
+    }
+
+    .errorMessage {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .returnLink {
+        font-size: 0.9rem;
+    }
+
+    
+
+    .pageContainer{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .pageLeftContainer,
+    .pageRightContainer {
+        display: none; /* Hide on small screens */
+    }
+
+    .pageCenterContainer {
+        width: 100%; /* Take up full width */
+        margin-left: 1rem;
+        margin-right: 1rem;
+        border: none;
+        border-radius: 0;
+
+        padding: 1rem 4%;
+        margin:0;
+        margin-top: 3.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        align-items: flex-start;
+    }
+
+    .contextContainer{
+        margin: 0;
+        border-bottom: 2px solid #D9D9D9;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contextContainer p {
+        font-size: 0.9rem;
+      }
+
+
+
+    .contextContainer h3 {
+        gap: 0.5rem; /* İkon ile metin arasındaki boşluk */
+        font-size: 0.9rem;
+    }
+
+    
+    .contextEtkin{
+        font-size: 0.9rem;
+    }
+    
+    .contextContainer h1 {
+        font-size: 1.1rem;
+    }
+
+
+    .TanitimContainer {
+        margin: 0;
+        padding-top: 4%;
+        padding-bottom: 4%;
+        gap: 0.5rem;
+      }
+      
+      .TanitimBaslik {
+        font-size: 1.1rem;
+      }
+      
+      .TanitimText{
+        font-size: 0.9rem;
+        margin: 0;
+        margin-bottom: 4%;
+      }
+  
+  
+      .TanitimImageContainer{
+        border: 2px solid #D9D9D9;
+        padding: 1rem 4%;
+        min-height: 400px;
+        background-color: #1D64F2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        border-radius: 0.5rem;
+      }
+      
+    
+      .TanitimImageBaslik {
+        color: #fff;
+        font-size: 1.1rem;
+        margin: 0;
+      }
+    
+      .TanitimImageContainer img {
+        width: 100%;
+        height: auto;
+      }
+  
+  
+  
+      .textImage{
+        display: flex;
+        justify-content: center;
+
+    
+      }
+      .textImage img {
+        width: 40%;
+        height: auto;
+      }
+        
+}
+  
+  
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+  
+  
+    .pageContainer{
+      /* min-height: 50vh; */
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .pageLeftContainer,
+    .pageRightContainer {
+      display: none; /* Hide on small screens */
+    }
+  
+    .pageCenterContainer {
+        margin: 1rem 6%;
+        width: 100%;
+    }
+  
+  
+  }
+  
+  
+  @media screen and (min-width: 1025px) and (max-width: 1279px) {
+  
+    .pageLeftContainer{
+      margin-left: 1%;
+    }
+    .pageRightContainer {
+      margin-right: 1%;
+    }
+  
+  }

@@ -116,6 +116,13 @@ export async function GET() {
       priority: 0.7,
     }));
 
+    const productPagesTakviyeNedir = productsTakviye.map(product => ({
+      url: `https://olcekapp.com/besintakviyeleri/${product.product_category.supplement.slug}/${product.product_category.slug}/${product.slug}/nedir-ne-icin-kullanilir`,
+      lastmod: new Date().toISOString(),
+      changefreq: 'weekly',
+      priority: 0.7,
+    }));
+
     const sitemapPages = [
       ...staticPages,
       ...dynamicPages,
@@ -125,7 +132,8 @@ export async function GET() {
       ...productHesapla,
       ...dynamicPagesTakviye,
       ...productPagesTakviye,
-      ...productPagesTakviyeKullanimSekli
+      ...productPagesTakviyeKullanimSekli,
+      ...productPagesTakviyeNedir
     ];
 
     const sitemapXml = `

@@ -600,11 +600,20 @@ export default function IlacKategori() {
                       <h2>{medication.name}</h2>
                       <div className={styles.contextArticle}>
                       <h3>
-                        <FaInfoCircle className={styles.iconContext} />
+                        <FaCalculator className={styles.iconContext} />
                         <Link href={`/besintakviyeleri/${activeCategoryCombined.slug}/${activeAltCategoryCombined.slug}/${medication.slug}/kullanim-sekli`}>
                           {medication.name} nasıl kullanılır? Doğru kullanım şekli rehberi.
                         </Link>
 
+                      </h3>
+                      {/* Nedir ve Ne İçin Kullanılır kısmı */}
+                      <h3>
+                        <FaInfoCircle className={styles.iconContext} />
+                        <Link href={`/besintakviyeleri/${activeCategoryCombined.slug}/${activeAltCategoryCombined.slug}/${medication.slug}/nedir-ne-icin-kullanilir`}>
+                          {medication.name} hakkında bilgi: Nedir? {medication.ne_icin_kullanilir && medication.ne_icin_kullanilir.toLowerCase() !== 'nan' 
+                            ? `Ne için kullanılır / sağlık beyanı açıklaması.`
+                            : ``}
+                        </Link>
                       </h3>
                       </div>
                     </div>

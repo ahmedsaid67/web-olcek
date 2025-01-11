@@ -1,37 +1,33 @@
-import { FaChevronRight, FaChevronLeft, FaSearch, FaInfoCircle, FaCalculator, FaFileAlt } from 'react-icons/fa';
-import styles from '../[slug]/kullanim-sekli/TakviyeDetay.module.css';
-import Link from 'next/link';
-import axios from 'axios';
-import Head from 'next/head';
-
+import Link from "next/link";
+import Head from "next/head";
+import styles from './Nedir.module.css'
+import { FaInfoCircle, FaCalculator, FaFileAlt } from 'react-icons/fa';
 
 async function getProductDetail(slug) {
-    try {
-      const res = await fetch(`https://api.ölçek.com/api/appname/products/product-detail/?slug=${slug}`);
-  
-      // Eğer durum kodu 200 değilse, hata fırlat
-      if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.detail || "Sunucudan geçersiz bir yanıt alındı.");
-      }
-  
-      const data = await res.json();
-      return data;
-  
-    } catch (error) {
-      // Eğer spesifik bir hata mesajı varsa
-      if (error.message.includes("Belirtilen slug ile eşleşen bir ürün bulunamadı.")) {
-        throw new Error("Aradığınız besin takviyesi sistemimizde mevcut değil. Lütfen doğru ismi yazdığınızdan emin olun.")
-      } else {
-        // Genel hata
-        throw new Error("Bir şeyler ters gitti, daha sonra tekrar deneyiniz.");
-      }
+  try {
+    const res = await fetch(`https://api.ölçek.com/api/appname/products/product-detail/?slug=${slug}`);
+
+    // Eğer durum kodu 200 değilse, hata fırlat
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.detail || "Sunucudan geçersiz bir yanıt alındı.");
+    }
+
+    const data = await res.json();
+    return data;
+
+  } catch (error) {
+    // Eğer spesifik bir hata mesajı varsa
+    if (error.message.includes("Belirtilen slug ile eşleşen bir ilaç bulunamadı.")) {
+      throw new Error("Aradığınız ilaç sistemimizde mevcut değil. Lütfen doğru ismi yazdığınızdan emin olun.")
+    } else {
+      // Genel hata
+      throw new Error("Bir şeyler ters gitti, daha sonra tekrar deneyiniz.");
     }
   }
+}
 
-
-
-  export default async function TakviyeDetay({ params }) {
+export default async function TakviyeDetay({ params }) {
     const { slug } = params; // Dinamik slug
     const category = params.category;
     const altCategory = params.altcategory;
@@ -56,7 +52,7 @@ async function getProductDetail(slug) {
             <div className={styles.messageContainer}>
               <h1 className={styles.errorMessage}>{errorMessage}</h1>
               {errorMessage==="Aradığınız besin takviyesi sistemimizde mevcut değil. Lütfen doğru ismi yazdığınızdan emin olun." && (
-                <Link href="/besintakviyeleri" className={styles.returnLink}>Besin Takviyeleri Sayfasına Git</Link>)
+                <Link href="/besintakviyeleri" className={styles.returnLink}>İlaç Kategori Sayfasına Git</Link>)
               }
             </div>
           </div>
@@ -79,25 +75,32 @@ async function getProductDetail(slug) {
 
 
   
-  
-  
 
+  // Ürün varsa detayları göster
   return (
     <>
-
-     <Head>
-        <title>{`${product.name} Kullanım Şekli`}</title>
+      <Head>
+        <title>
+          {product.name} Nedir?
+          {product.ne_icin_kullanilir && product.ne_icin_kullanilir.toLowerCase() !== 'nan' 
+            ? ' - Ne İçin Kullanılır / Sağlık Beyanı'
+            : ''}
+        </title>
         <meta
           name="description"
-          content={`${product.name} kullanım şekli bilgilerine ulaşabilirsiniz. `}
+          content={
+            product.ne_icin_kullanilir && product.ne_icin_kullanilir.toLowerCase() !== 'nan'
+              ? `${product.name} Nedir - Ne İçin Kullanılır / Sağlık Beyanı hakkında detaylı bilgi edinin.`
+              : `${product.name} Nedir hakkında detaylı bilgi edinin.`
+          }
         />
       </Head>
 
 
 
-    <div className={styles.drugContainer}>
+      <div className={styles.drugContainer}>
 
-        <div className={styles.firstContainer}>
+      <div className={styles.firstContainer}>
           <div className={styles.mapContainer}>
             <Link href="/">
               <div className={styles.mapText}>Ana Sayfa</div>
@@ -115,40 +118,44 @@ async function getProductDetail(slug) {
               <div className={styles.mapText}>{product.product_category.name}</div>
             </Link>
             <span className={styles.icon}>/</span>
+            <Link href={`/besintakviyeleri/${product.product_category.supplement.slug}/${product.product_category.slug}/${product.slug}`}>
+              <div className={styles.mapText}>{product.name}</div>
+            </Link>
+            <span className={styles.icon}>/</span>
             <div className={`${styles.mapText} ${styles.activeText}`}>
-              {product.name}
+              {product.ne_icin_kullanilir && product.ne_icin_kullanilir.toLowerCase() !== 'nan'
+                ? `${product.name} Nedir? Ne İçin Kullanılır / Sağlık Beyanı Açıklaması`
+                : `${product.name} Nedir?`}
             </div>
           </div>
         </div>
 
 
-      <div className={styles.pageContainer}>
-        <div className={styles.pageLeftContainer}>
-          <div className={styles.pageLeftAdvert}>
-            reklam alanıdır
-          </div>
-        </div>
+        
 
-        <div className={styles.pageCenterContainer}>
-            <div className={styles.contextContainer}>
-                <h1>{product.name}</h1>
-                <div >
-                  <h3>
-                    <FaCalculator className={styles.iconContext} />
-                    <Link href={`/besintakviyeleri/${product.product_category.supplement.slug}/${product.product_category.slug}/${product.slug}/kullanim-sekli/`}>
-                        {product.name} nasıl kullanılır? Doğru kullanım şekli rehberi.
-                    </Link>
-                  </h3>
-                  <h3>
-                    <FaInfoCircle className={styles.iconContext} />
-                    <Link href={`/besintakviyeleri/${product.product_category.supplement.slug}/${product.product_category.slug}/${product.slug}/nedir-ne-icin-kullanilir`}>
-                      {product.name} hakkında bilgi: Nedir? {product.ne_icin_kullanilir && product.ne_icin_kullanilir.toLowerCase() !== 'nan' 
-                        ? `Ne için kullanılır / sağlık beyanı açıklaması.`
-                        : ``}
-                    </Link>
-                  </h3>
-                </div>
+        <div className={styles.pageContainer}>
+          <div className={styles.pageLeftContainer}>
+            <div className={styles.pageLeftAdvert}>
+              reklam alanıdır
             </div>
+          </div>
+
+          <div className={styles.pageCenterContainer}>
+          <div key={product.id} className={styles.contextContainer}>
+            <h1>
+              {product.name} Nedir?
+              {product.ne_icin_kullanilir && product.ne_icin_kullanilir.toLowerCase() !== 'nan' 
+                ? ' Ne İçin Kullanılır / Sağlık Beyanı Açıklaması'
+                : ''}
+            </h1>
+            <p>{product.nedir}</p>
+            {product.ne_icin_kullanilir && product.ne_icin_kullanilir.toLowerCase() !== 'nan' && (
+              <p>{product.ne_icin_kullanilir.replace(/[“”"]/g, '')}</p>
+            )}
+          </div>
+
+
+
 
             <div className={styles.TanitimContainer}>
                 <div className={styles.TanitimBaslik}>Ölçek | İlaç ve Besin Takviyelerinde Doz Hesaplama ve Hatırlatıcı Asistanınız</div>
@@ -164,17 +171,16 @@ async function getProductDetail(slug) {
                   </div>
                 </Link>
             </div>
-        </div>
-        <div className={styles.pageRightContainer}>
-          <div className={styles.pageRightAdvert}>
-            reklam alanıdır
+
+
+          </div>
+          <div className={styles.pageRightContainer}>
+            <div className={styles.pageRightAdvert}>
+              reklam alanıdır
+            </div>
           </div>
         </div>
-      </div>
-
-      
       </div>
     </>
   );
 }
-
