@@ -145,11 +145,13 @@ background-color: #154a9d; /* Hover etkisi */
   }
   
   .pdfContainer {
-    width: 90%;
-    height: 90vh;
+    width: 100%;
+    height: 87vh;
     overflow: auto;
-    background-color: #f4f4f4; /* Arka plan */
+    background-color: rgb(29, 29, 31); /* Arka plan */
     padding: 1rem; /* İç boşluk */
+    display: flex;
+    justify-content: center;
   }
 
 
@@ -258,7 +260,8 @@ background-color: #154a9d; /* Hover etkisi */
   }
 
   .pdfContainer {
-    width: 95%;
+    width: 100%;
+    height: 80vh;
   }
   
 }

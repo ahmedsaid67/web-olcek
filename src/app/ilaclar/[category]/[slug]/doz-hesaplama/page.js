@@ -1,28 +1,19 @@
 import Link from "next/link";
 import Head from "next/head";
-import styles from './Doz.module.css'
+import styles from './Doz.module.css';
 import DozHesaplama from "../../../../../../compenents/DozHesaplama";
-import { redirect } from "next/navigation";
+import axios from 'axios';
 
 async function getProductDetail(slug) {
   try {
-    const res = await fetch(`https://api.ölçek.com/api/appname/ilac/ilac-doz-detail/?slug=${slug}`);
+    const response = await axios.get(`https://api.ölçek.com/api/appname/ilac/ilac-doz-detail/?slug=${slug}`);
 
-    // Eğer durum kodu 200 değilse, hata fırlat
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.detail || "Sunucudan geçersiz bir yanıt alındı.");
-    }
-
-    const data = await res.json();
-    return data;
+    return response.data;
 
   } catch (error) {
-    // Eğer spesifik bir hata mesajı varsa
-    if (error.message.includes("Belirtilen slug ile eşleşen bir ilaç bulunamadı.")) {
+    if (error.response && error.response.data.detail === "Belirtilen slug ile eşleşen bir ilaç bulunamadı.") {
       throw new Error("Aradığınız ilaç sistemimizde mevcut değil. Lütfen doğru ismi yazdığınızdan emin olun.")
     } else {
-      // Genel hata
       throw new Error("Bir şeyler ters gitti, daha sonra tekrar deneyiniz.");
     }
   }
@@ -32,7 +23,6 @@ export default async function TakviyeDetay({ params }) {
   const { slug } = params; // Dinamik slug
   const category = params.category;
 
-  // Sunucu tarafında ürün verisini çekme
   let product;
   let errorMessage = null;
 
@@ -41,25 +31,21 @@ export default async function TakviyeDetay({ params }) {
   } catch (error) {
     errorMessage = error.message;
   }
-  // console.log(product)
 
-  // Hata mesajı veya ürün verisi olmayan durum
   if (errorMessage) {
     return (
       <div className={styles.drugContainer}>
         <div className={styles.firstContainer}>
           <div className={styles.messageContainer}>
             <h1 className={styles.errorMessage}>{errorMessage}</h1>
-            {errorMessage==="Aradığınız ilaç sistemimizde mevcut değil. Lütfen doğru ismi yazdığınızdan emin olun." && (
-              <Link href="/ilaclar" className={styles.returnLink}>İlaçlar Sayfasına Git</Link>)
-            }
+            {errorMessage === "Aradığınız ilaç sistemimizde mevcut değil. Lütfen doğru ismi yazdığınızdan emin olun." && (
+              <Link href="/ilaclar" className={styles.returnLink}>İlaçlar Sayfasına Git</Link>
+            )}
           </div>
         </div>
       </div>
     );
   }
-
-
 
   if (category != product.ilac_form.slug) {
     return (
@@ -74,24 +60,18 @@ export default async function TakviyeDetay({ params }) {
     );
   }
 
-
-
-  
-
-  // Ürün varsa detayları göster
   return (
     <>
-    <Head>
-      <title>{`${product.name} Doz Hesaplama`}</title>
-      <meta
-        name="description"
-        content={`${product.name} için doğru dozajı hesaplayın. Yaş ve kilo bilgilerinize göre önerilen doz miktarını öğrenin.`}
-      />
-    </Head>
+      <Head>
+        <title>{`${product.name} Doz Hesaplama`}</title>
+        <meta
+          name="description"
+          content={`${product.name} için doğru dozajı hesaplayın. Yaş ve kilo bilgilerinize göre önerilen doz miktarını öğrenin.`}
+        />
+      </Head>
 
       <div className={styles.drugContainer}>
-
-        <div className={styles.firstContainer}>  
+        <div className={styles.firstContainer}>
           <div className={styles.mapContainer}>
             <Link href="/">
               <div className={styles.mapText}>Ana Sayfa</div>
@@ -116,10 +96,8 @@ export default async function TakviyeDetay({ params }) {
             <div className={`${styles.mapText} ${styles.activeText}`}>
               {product.name} Doz Hesaplama
             </div>
-          </div>        
+          </div>
         </div>
-
-        
 
         <div className={styles.pageContainer}>
           <div className={styles.pageLeftContainer}>
@@ -138,28 +116,25 @@ export default async function TakviyeDetay({ params }) {
                 Kullanıcı, sağlık durumu ile ilgili her zaman doktoruna veya bir sağlık uzmanına danışmalıdır.
               </p>
 
-              <DozHesaplama product={product}/>
+              <DozHesaplama product={product} />
             </div>
-
-
 
             <div className={styles.TanitimContainer}>
-                <div className={styles.TanitimBaslik}>Ölçek | İlaç ve Besin Takviyelerinde Doz Hesaplama ve Hatırlatıcı Asistanınız</div>
-                <div className={styles.TanitimText}>Ölçek ile İlaç dozlarınızı kolayca hesaplayın, besin takviyelerinizin dozlarına hızla ulaşın! Hatırlatma özelliğiyle sağlığınızı güvenle koruyun. <Link href="/indir"><strong>Hemen indirin!</strong></Link></div>
-                <Link href="/indir">
-                  <div className={styles.TanitimImageContainer}>
-                    <div className={styles.TanitimImageBaslik}>İlaç ve Takviyede Doğru Doz İçin: Ölçek!</div>
-                    <img src="/sliderbig.png" alt="Ölçek | İlaç, Besin Takviyesi Doz Hesaplama ve Hatırlatma Uygulaması" />
-                    <div className={styles.textImage}>
-                      <img src="/storeios.png" alt="Ölçek | İlaç, Besin Takviyesi Doz Hesaplama ve Hatırlatma Uygulaması İndir - İos" />
-                      <img src="/storegoogle.png" alt="Ölçek | İlaç, Besin Takviyesi Doz Hesaplama ve Hatırlatma Uygulaması İndir - Android" />
-                    </div>
+              <div className={styles.TanitimBaslik}>Ölçek | İlaç ve Besin Takviyelerinde Doz Hesaplama ve Hatırlatıcı Asistanınız</div>
+              <div className={styles.TanitimText}>Ölçek ile İlaç dozlarınızı kolayca hesaplayın, besin takviyelerinizin dozlarına hızla ulaşın! Hatırlatma özelliğiyle sağlığınızı güvenle koruyun. <Link href="/indir"><strong>Hemen indirin!</strong></Link></div>
+              <Link href="/indir">
+                <div className={styles.TanitimImageContainer}>
+                  <div className={styles.TanitimImageBaslik}>İlaç ve Takviyede Doğru Doz İçin: Ölçek!</div>
+                  <img src="/sliderbig.png" alt="Ölçek | İlaç, Besin Takviyesi Doz Hesaplama ve Hatırlatma Uygulaması" />
+                  <div className={styles.textImage}>
+                    <img src="/storeios.png" alt="Ölçek | İlaç, Besin Takviyesi Doz Hesaplama ve Hatırlatma Uygulaması İndir - İos" />
+                    <img src="/storegoogle.png" alt="Ölçek | İlaç, Besin Takviyesi Doz Hesaplama ve Hatırlatma Uygulaması İndir - Android" />
                   </div>
-                </Link>
+                </div>
+              </Link>
             </div>
-
-
           </div>
+
           <div className={styles.pageRightContainer}>
             <div className={styles.pageRightAdvert}>
               reklam alanıdır

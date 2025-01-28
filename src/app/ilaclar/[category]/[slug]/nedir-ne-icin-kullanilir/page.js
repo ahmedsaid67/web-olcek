@@ -1,24 +1,17 @@
 import Link from "next/link";
 import Head from "next/head";
 import styles from './Nedir.module.css'
-import { FaInfoCircle, FaCalculator, FaFileAlt } from 'react-icons/fa';
+import axios from 'axios';
 
 async function getProductDetail(slug) {
   try {
-    const res = await fetch(`https://api.ölçek.com/api/appname/ilac/ilac-nedir/?slug=${slug}`);
+    const res = await axios.get(`https://api.ölçek.com/api/appname/ilac/ilac-nedir/?slug=${slug}`);
 
-    // Eğer durum kodu 200 değilse, hata fırlat
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.detail || "Sunucudan geçersiz bir yanıt alındı.");
-    }
-
-    const data = await res.json();
-    return data;
+    return res.data;
 
   } catch (error) {
     // Eğer spesifik bir hata mesajı varsa
-    if (error.message.includes("Belirtilen slug ile eşleşen bir ilaç bulunamadı.")) {
+    if (error.response && error.response.data.detail.includes("Belirtilen slug ile eşleşen bir ilaç bulunamadı.")) {
       throw new Error("Aradığınız ilaç sistemimizde mevcut değil. Lütfen doğru ismi yazdığınızdan emin olun.")
     } else {
       // Genel hata
@@ -40,42 +33,31 @@ export default async function TakviyeDetay({ params }) {
   } catch (error) {
     errorMessage = error.message;
   }
-  // console.log(product)
 
   // Hata mesajı veya ürün verisi olmayan durum
   if (errorMessage) {
     return (
       <div className={styles.drugContainer}>
-        <div className={styles.firstContainer}>
           <div className={styles.messageContainer}>
             <h1 className={styles.errorMessage}>{errorMessage}</h1>
-            {errorMessage==="Aradığınız ilaç sistemimizde mevcut değil. Lütfen doğru ismi yazdığınızdan emin olun." && (
-              <Link href="/ilaclar" className={styles.returnLink}>İlaç Kategori Sayfasına Git</Link>)
-            }
-          </div>
+            {errorMessage === "Aradığınız ilaç sistemimizde mevcut değil. Lütfen doğru ismi yazdığınızdan emin olun." && (
+              <Link href="/ilaclar" className={styles.returnLink}>İlaç Kategori Sayfasına Git</Link>
+            )}
         </div>
       </div>
     );
   }
-
-
 
   if (category != product.ilac_form.slug) {
     return (
       <div className={styles.drugContainer}>
-        <div className={styles.firstContainer}>
           <div className={styles.messageContainer}>
             <h1 className={styles.errorMessage}>Aradığınız ilaç sistemimizde mevcut değil. Lütfen doğru ismi yazdığınızdan emin olun.</h1>
             <Link href="/ilaclar" className={styles.returnLink}>İlaç Kategori Sayfasına Git</Link>
-          </div>
         </div>
       </div>
     );
   }
-
-
-
-  
 
   // Ürün varsa detayları göster
   return (
@@ -89,8 +71,7 @@ export default async function TakviyeDetay({ params }) {
       </Head>
 
       <div className={styles.drugContainer}>
-
-        <div className={styles.firstContainer}>  
+        <div className={styles.firstContainer}>
           <div className={styles.mapContainer}>
             <Link href="/">
               <div className={styles.mapText}>Ana Sayfa</div>
@@ -115,10 +96,8 @@ export default async function TakviyeDetay({ params }) {
             <div className={`${styles.mapText} ${styles.activeText}`}>
               {product.name} Nedir ve Ne İçin Kullanılır?
             </div>
-          </div>        
+          </div>
         </div>
-
-        
 
         <div className={styles.pageContainer}>
           <div className={styles.pageLeftContainer}>
@@ -134,25 +113,22 @@ export default async function TakviyeDetay({ params }) {
               <p>{product.ne_icin_kullanilir}</p>
             </div>
 
-
-
             <div className={styles.TanitimContainer}>
-                <div className={styles.TanitimBaslik}>Ölçek | İlaç ve Besin Takviyelerinde Doz Hesaplama ve Hatırlatıcı Asistanınız</div>
-                <div className={styles.TanitimText}>Ölçek ile İlaç dozlarınızı kolayca hesaplayın, besin takviyelerinizin dozlarına hızla ulaşın! Hatırlatma özelliğiyle sağlığınızı güvenle koruyun. <Link href="/indir"><strong>Hemen indirin!</strong></Link></div>
-                <Link href="/indir">
-                  <div className={styles.TanitimImageContainer}>
-                    <div className={styles.TanitimImageBaslik}>İlaç ve Takviyede Doğru Doz İçin: Ölçek!</div>
-                    <img src="/sliderbig.png" alt="Ölçek | İlaç, Besin Takviyesi Doz Hesaplama ve Hatırlatma Uygulaması" />
-                    <div className={styles.textImage}>
-                      <img src="/storeios.png" alt="Ölçek | İlaç, Besin Takviyesi Doz Hesaplama ve Hatırlatma Uygulaması İndir - İos" />
-                      <img src="/storegoogle.png" alt="Ölçek | İlaç, Besin Takviyesi Doz Hesaplama ve Hatırlatma Uygulaması İndir - Android" />
-                    </div>
+              <div className={styles.TanitimBaslik}>Ölçek | İlaç ve Besin Takviyelerinde Doz Hesaplama ve Hatırlatıcı Asistanınız</div>
+              <div className={styles.TanitimText}>Ölçek ile İlaç dozlarınızı kolayca hesaplayın, besin takviyelerinizin dozlarına hızla ulaşın! Hatırlatma özelliğiyle sağlığınızı güvenle koruyun. <Link href="/indir"><strong>Hemen indirin!</strong></Link></div>
+              <Link href="/indir">
+                <div className={styles.TanitimImageContainer}>
+                  <div className={styles.TanitimImageBaslik}>İlaç ve Takviyede Doğru Doz İçin: Ölçek!</div>
+                  <img src="/sliderbig.png" alt="Ölçek | İlaç, Besin Takviyesi Doz Hesaplama ve Hatırlatma Uygulaması" />
+                  <div className={styles.textImage}>
+                    <img src="/storeios.png" alt="Ölçek | İlaç, Besin Takviyesi Doz Hesaplama ve Hatırlatma Uygulaması İndir - İos" />
+                    <img src="/storegoogle.png" alt="Ölçek | İlaç, Besin Takviyesi Doz Hesaplama ve Hatırlatma Uygulaması İndir - Android" />
                   </div>
-                </Link>
+                </div>
+              </Link>
             </div>
-
-
           </div>
+
           <div className={styles.pageRightContainer}>
             <div className={styles.pageRightAdvert}>
               reklam alanıdır

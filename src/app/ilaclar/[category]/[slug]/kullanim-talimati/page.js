@@ -3,24 +3,17 @@ import styles from "./KullanimTalimati.module.css";
 import Head from "next/head";
 import CloseButton from "../../../../../../compenents/CloseButton";
 import PDFViewer from "../../../../../../compenents/PDFViewer";
-
+import axios from 'axios';
 
 async function getProductDetail(slug) {
   try {
-    const res = await fetch(`https://api.ölçek.com/api/appname/ilac/kullanim-talimati/?slug=${slug}`);
+    const res = await axios.get(`https://api.ölçek.com/api/appname/ilac/kullanim-talimati/?slug=${slug}`);
 
-    // Eğer durum kodu 200 değilse, hata fırlat
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.detail || "Sunucudan geçersiz bir yanıt alındı.");
-    }
-
-    const data = await res.json();
-    return data;
+    return res.data;
 
   } catch (error) {
     // Eğer spesifik bir hata mesajı varsa
-    if (error.message.includes("Belirtilen slug ile eşleşen bir ilaç bulunamadı.")) {
+    if (error.response && error.response.data.detail.includes("Belirtilen slug ile eşleşen bir ilaç bulunamadı.")) {
       throw new Error("Aradığınız ilaç sistemimizde mevcut değil. Lütfen doğru ismi yazdığınızdan emin olun.")
     } else {
       // Genel hata
@@ -36,18 +29,15 @@ export default async function TakviyeDetay({ params }) {
   let product;
   let errorMessage = null;
 
-  // console.log(params)
-
   try {
     product = await getProductDetail(slug);
+
+
   } catch (error) {
     errorMessage = error.message;
   }
-  // console.log(product)
 
-  // console.log(errorMessage)
 
-  // Hata mesajı veya ürün verisi olmayan durum
   if (errorMessage) {
     return (
       <div className={styles.MainContainer}>
@@ -61,7 +51,6 @@ export default async function TakviyeDetay({ params }) {
     );
   }
 
-  
   if (category != product.ilac_form.slug) {
     return (
       <div className={styles.MainContainer}>
@@ -73,11 +62,6 @@ export default async function TakviyeDetay({ params }) {
     );
   }
 
-  
-
-  
-
-  // Ürün varsa detayları göster
   return (
     <>
       <Head>

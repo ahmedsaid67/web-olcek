@@ -197,8 +197,9 @@ export default function IlacKategori() {
         console.error('Error fetching medications:', error);
         if (error.response && error.response.data.detail === "Invalid page.") {
           router.push('/404');
+        }else{
+          router.push("/servererror");
         }
-        router.push("/servererror");
       } finally {
         setMedicationsLoading(false); // Set medications loading state to false
       }
