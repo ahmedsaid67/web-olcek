@@ -376,8 +376,9 @@ export default function DozHesaplama({product}) {
             
                     },
                 });
-    
+                
                 setInfo(response.data.bilgi)
+                setUyari(response.data.check_uyari)
             }
         }
 
@@ -470,6 +471,14 @@ export default function DozHesaplama({product}) {
             <div className={styles.explanationDozContainer}>
                 <div className={styles.explanationTitle}>Kullanım Bilgisi</div>
                 <p>{info}</p>
+                {
+                    uyari && (
+                        <>
+                        <div className={styles.explanationTitleUyari}>Kullanım Uyarısı</div>
+                        <p>{uyari}</p>
+                        </>
+                    )
+                }
             </div>
         ) : (
 
