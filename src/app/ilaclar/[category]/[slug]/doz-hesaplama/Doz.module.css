@@ -169,6 +169,14 @@
     color: #fff;
   }
 
+  .explanationTitleUyari{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #fff;
+    margin-top: 1rem;
+  }
+
   .explanationDozContainer p {
     font-size: 1rem;
     margin: 0;
@@ -574,6 +582,10 @@
     }
   
     .explanationTitle{
+      font-size: 1.1rem;
+    }
+
+    .explanationTitleUyari{
       font-size: 1.1rem;
     }
   
